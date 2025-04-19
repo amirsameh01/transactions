@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=transactions.settings
+      - MONGO_URI=mongodb://mongo:27017/your_db
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - mongo
+      - redis
+
+  celery:
+    build: .
+    command: celery -A transactions worker --loglevel=info
+    volumes:
+      - .:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=transactions.settings
+      - MONGO_URI=mongodb://mongo:27017/transactions
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: registry.docker.ir/mongo:latest
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+
+  redis:
+    image: registry.docker.ir/redis:6-alpine
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  mongo_data:
+  redis_data:

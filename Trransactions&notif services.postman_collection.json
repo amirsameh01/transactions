@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "ed28e4bb-cc06-44f3-b54a-8289a9ee7c94",
+		"name": "Trransactions&notif services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27353242"
+	},
+	"item": [
+		{
+			"name": "transactions/report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/transactions/report/?type=count&mode=monthly&merchantId=63a69a2d18f93478889d5f11",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"transactions",
+						"report",
+						""
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "count"
+						},
+						{
+							"key": "mode",
+							"value": "monthly"
+						},
+						{
+							"key": "merchantId",
+							"value": "63a69a2d18f93478889d5f11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions/summary-report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/transactions/summary-report/?type=count&mode=monthly&merchantId=63a69a2d18f93478889d5f11",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"transactions",
+						"summary-report",
+						""
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "count"
+						},
+						{
+							"key": "mode",
+							"value": "monthly"
+						},
+						{
+							"key": "merchantId",
+							"value": "63a69a2d18f93478889d5f11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions/report Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"merchantId\": \"63a69a2d18f93478889d5f11\",\n    \"content\": \"Sample content\",\n    \"mediums\": [\"email\"],\n    \"recipient_info\": {\n        \"email\": \"customer@example.com\"\n    }}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/notifications/send/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notifications",
+						"send",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
