@@ -93,7 +93,7 @@ MONGO_PORT = 27017
 MONGO_DATABASE_HOST = f'mongodb://{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}'
 # MongoEngine connection setup
 mongoengine.connect(db=MONGO_DB, host=MONGO_DATABASE_HOST, alias='default')
-conn = mongoengine.get_connection(alias='default')
+conn = mongoengine.get_connection(alias='default') #NOTE: remove this ln.
 
 
 # Password validation

@@ -26,16 +26,15 @@ class NotificationDispatcher:
 
             formatted_message = MessageTemplate.format_for_medium(
                 notification.content, 
-                medium
-            )
-
+                medium)
+            
+            #TODO: should use a transaction atomic block.
             try:
                 handler.send(formatted_message, recipient)
                 NotificationLog.objects.create(
                     notification_id=notification,
                     medium=medium,
-                    status="sent"
-                )
+                    status="sent")
             except Exception as e:
                 NotificationLog.objects.create(
                     notification_id=notification,

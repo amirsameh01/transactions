@@ -6,10 +6,11 @@ class Notification(Document):
     merchantId = ObjectIdField()
     content = StringField()
     mediums = ListField(StringField())
-    recipient_info = DictField() 
+    recipient_info = DictField() # could be encrypted
     status = StringField(choices=["pending", "sent", "failed"])
     retries = IntField(default=0)
     created_at = DateTimeField(default=timezone.now)
+    
 
     meta = {'collection' : 'notification'}
 

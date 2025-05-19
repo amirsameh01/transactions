@@ -12,7 +12,6 @@ class SMSHandler(BaseMedium):
 class EmailHandler(BaseMedium):
     def send(self, message, recipient):
         print(f"[EMAIL] Sending to {recipient}: {message}")
-        return "some test"
 
 class TelegramHandler(BaseMedium):
     def send(self, message, recipient):

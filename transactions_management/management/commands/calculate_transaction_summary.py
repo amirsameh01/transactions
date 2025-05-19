@@ -89,12 +89,13 @@ class Command(BaseCommand):
                 match_query = {
                     "createdAt": {
                         "$gte": start_date,
-                        "$lte": end_date} }
+                        "$lte": end_date}}
                 pipeline = []
 
                 if merchant_id:
                     match_query["merchantId"] = merchant_id
                 
+                pipeline.append({"$match": match_query}) #NOTE: missing ln
                 pipeline = self._build_pipeline(pipeline, mode)                
                 
                 result = Transaction.objects.aggregate(pipeline)

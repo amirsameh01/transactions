@@ -7,12 +7,13 @@ class Transaction(Document):
     
     meta = {'collection': 'transaction'}
 
+#TODO: rewrite comments 
 class TransactionSummary(Document):
-    mode = StringField(required=True, choices=['daily', 'weekly', 'monthly'])  # 'daily', 'weekly', 'monthly'
-    type = StringField(required=True, choices=['count', 'amount'])  # 'count', 'amount'
-    merchantId = ObjectIdField(required=False)  # Optional, for per-merchant summaries
-    key = StringField(required=True)  # Date formatting as per specs
-    value = IntField(required=True)  # Count or amount value
+    mode = StringField(required=True, choices=['daily', 'weekly', 'monthly'])  
+    type = StringField(required=True, choices=['count', 'amount'])
+    merchantId = ObjectIdField(required=False)
+    key = StringField(required=True) # amount / count
+    value = IntField(required=True) # 
     
     meta = {
         'collection': 'transaction_summary',

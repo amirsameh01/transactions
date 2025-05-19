@@ -1,3 +1,5 @@
+#TODO: this one could use a strategy pattern (or mapping dic), (to be more flexiable for new mediums)
+
 class MessageTemplate:
     @staticmethod
     def format_for_medium(message, medium):

@@ -26,7 +26,7 @@ class SendNotificationView(APIView):
         if not all(field in data for field in required_fields):
             return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
         
-        # Create notification
+
         notification = Notification.objects.create(
             merchantId=data["merchantId"],
             content=data["content"],

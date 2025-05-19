@@ -130,9 +130,9 @@ class TransactionSummaryReportView(APIView):
             except bson_errors.InvalidId:
                 return Response({"error": "Invalid merchantId format"}, 
                                 status=status.HTTP_400_BAD_REQUEST)
-        else:
-            query &= Q(merchantId=None)
-        
+        #else:
+            #query &= Q(merchantId=None) #NOTE: when merhcnat id is not provided, i gotta query the whole collections not the null merchand ids.
+
         summaries = TransactionSummary.objects(query).order_by('key')
         
         formatted_result = [{"key": summary.key, "value": summary.value} for summary in summaries]
